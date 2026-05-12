@@ -1,0 +1,7 @@
+(function(){let e=document.createElement(`link`).relList;if(e&&e.supports&&e.supports(`modulepreload`))return;for(let e of document.querySelectorAll(`link[rel="modulepreload"]`))n(e);new MutationObserver(e=>{for(let t of e)if(t.type===`childList`)for(let e of t.addedNodes)e.tagName===`LINK`&&e.rel===`modulepreload`&&n(e)}).observe(document,{childList:!0,subtree:!0});function t(e){let t={};return e.integrity&&(t.integrity=e.integrity),e.referrerPolicy&&(t.referrerPolicy=e.referrerPolicy),e.crossOrigin===`use-credentials`?t.credentials=`include`:e.crossOrigin===`anonymous`?t.credentials=`omit`:t.credentials=`same-origin`,t}function n(e){if(e.ep)return;e.ep=!0;let n=t(e);fetch(e.href,n)}})(),document.head.insertAdjacentHTML(`beforeend`,`<style>.clickable-area {
+  cursor: pointer !important;
+  background-color: lightblue !important;
+  opacity: 0.8 !important;
+  border-inline: 1px dashed black !important;
+}
+</style>`),document.documentElement.addEventListener(`click`,()=>{let e=e=>{e.classList.add(`clickable-area`),setTimeout(()=>{e.classList.remove(`clickable-area`)},1e3)};setTimeout(()=>{[...document.querySelectorAll(`a`)].filter(e=>!e.getAttribute(`href`).startsWith(`#`)).forEach(e),document.querySelectorAll(`form input[type=submit]`).forEach(e)},200)});
